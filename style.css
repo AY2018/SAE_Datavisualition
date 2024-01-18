@@ -208,6 +208,7 @@ button:hover{
 
 .heading{
     height: 10%;
+    overflow-y: auto;
 }
 
 .heading h1{
@@ -386,7 +387,6 @@ svg {
     gap: 20px;
     height: 80%;
     overflow-y: auto;
-    justify-content: center;
 }
 
 
