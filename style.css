@@ -453,8 +453,9 @@ tr {
 
 
 
-#coeffCorrelation{
+span{
     color: red;
+    font-weight: bold;
 }
 
 .secondDataBoard .leftContainer{
