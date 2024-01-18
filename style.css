@@ -376,15 +376,18 @@ svg {
 .rightColumn {
     gap: 20px;
     overflow-y: auto;
-    justify-content: space-between;
 }
 
+.rightColumn p{
+    text-align: justify;
+}
 
 .analysisText{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    ƒheight: 80%;
+    height: fit-content;
+    max-height: 80%;
     overflow-y: auto;
 }
 
@@ -483,4 +486,8 @@ span{
     width: fit-content;
     margin-inline: auto;
     font-size: 1.5rem;
+}
+
+.secondDataBoard .rightColumn{
+    gap: 10px;
 }
