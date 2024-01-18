@@ -208,7 +208,6 @@ button:hover{
 
 .heading{
     height: 10%;
-    overflow-y: auto;
 }
 
 .heading h1{
@@ -385,7 +384,7 @@ svg {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    height: 80%;
+    ƒheight: 80%;
     overflow-y: auto;
 }
 
