@@ -16,11 +16,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <main id="main" class="move">
+    <main id="main" class="">
       <section id="homepage">
         <img src="3.png" alt="" class="img2" />
         <img src="2.png" alt="" class="img1" />
@@ -42,6 +43,7 @@
               en 2020 <span>(Par 100 000 personnes)</span>
             </h2>
             <svg viewBox="0 0 970 610" id="canvas"></svg>
+            <img src="./2.png" alt="" />
           </div>
           <div class="tooltipContainer">
             <div id="tooltip"></div>
@@ -175,8 +177,72 @@
               </section>
             </div>
             <div class="nextSection">
-              <section>
+              <section onclick="moveToChomage()">
                 <h3>Hypothèse : chômage</h3>
+              </section>
+            </div>
+          </section>
+        </article>
+      </article>
+
+      <!-- Second Page -->
+      <article class="secondDataBoard">
+        <article class="leftColumn">
+          <div class="title">
+            <h1>
+              Hypothèse : le taux de criminalité aux USA est influencé par le
+              taux de chomage
+            </h1>
+          </div>
+          <div class="mapContainer">
+            <canvas id="myChart"></canvas>
+          </div>
+        </article>
+
+        <article class="rightColumn">
+          <div class="analysis">
+            <section class="firstText">
+              <h2>
+                Analyse de la corrélation entre le taux de crime d'un état et
+                celui de ses voisins
+              </h2>
+              <p>
+                L'analyse du graphique révèle que, bien que certaines périodes
+                aux États-Unis aient montré une corrélation entre l'augmentation
+                ou la diminution simultanées du nombre de crimes et du taux de
+                chômage (comme entre 1989 et 2000), ces occurrences semblent se
+                limiter à des intervalles spécifiques.
+                <br /><br />
+                Pour évaluer notre hypothèse selon laquelle le taux de chômage
+                influence la criminalité aux États-Unis, nous avons calculé le
+                coefficient de corrélation afin de mesurer le degré de
+                dépendance entre ces deux variables. Sur la base des données
+                disponibles, le coefficient obtenu est de
+                <span id="coeffCorrelation"></span>. <br /><br />
+                Ce coefficient révèle une corrélation positive modeste entre le
+                taux de chômage et le nombre de crimes. En d'autres termes, il
+                tend à y avoir une légère augmentation du taux de criminalité
+                avec la hausse du chômage, et inversement. Néanmoins,
+                l'intensité relativement faible de ce coefficient suggère que la
+                relation entre ces variables n'est pas particulièrement robuste.
+                <br /><br />
+                Par ailleurs, la valeur faible du coefficient de corrélation
+                indique que d'autres facteurs, non considérés dans cette
+                analyse, pourraient également avoir une influence significative
+                sur les taux de criminalité. Ainsi, le taux de chômage est à
+                considérer comme une parmi plusieurs variables potentiellement
+                influentes.
+              </p>
+            </section>
+          </div>
+
+          <section class="endSection">
+            <div class="nextSection">
+              <section onclick="moveToMap()">
+                <h3>
+                  Hypothèse : le taux de criminalité d'un État pourrait être
+                  influencé par ceux de ses voisins
+                </h3>
               </section>
             </div>
           </section>
@@ -184,6 +250,18 @@
       </article>
     </main>
 
+    <script>
+      function moveToChomage() {
+        document.getElementById('main').classList.remove('moveToMap');
+        document.getElementById('main').classList.add('moveToChomage');
+      }
+
+      function moveToMap() {
+        document.getElementById('main').classList.remove('moveToChomage');
+        document.getElementById('main').classList.add('moveToMap');
+      }
+    </script>
     <script src="./script.js"></script>
+    <script src="./script2.js"></script>
   </body>
 </html>

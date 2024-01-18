@@ -42,7 +42,7 @@ h1, h2{
     display: flex;
     overflow: hidden;
     position: relative;
-    z-index: 90;
+    z-index: 9999;
     background-color: transparent;
 }
 
@@ -72,7 +72,10 @@ h1, h2{
     opacity: 0 !important;
 }
 
-.firstDataBoard{
+.move .firstDataBoard{
+    opacity: 1;
+}
+.firstDataBoard, .secondDataBoard{
     background-color: black;
     width: 100%;
     height: 100%;
@@ -83,8 +86,34 @@ h1, h2{
     padding: 30px 2.5%;
     display: flex;
     overflow: hidden;
+    opacity: 0;
+    transition: opacity 1s ease-in, z-index 1s ease 2s;
+    
 }
 
+.moveToChomage .firstDataBoard{
+    opacity: 0;
+    z-index: 8;
+    
+}
+
+.secondDataBoard{
+    z-index: 5;
+}
+.moveToChomage .secondDataBoard{
+    z-index: 9;
+    opacity: 1;
+}
+
+.moveToMap .firstDataBoard{
+    opacity: 1;
+    z-index: 10;
+}
+
+.moveToMap .secondDataBoard{
+    opacity: 0;
+    z-index: 8;
+}
 
 .blackscreen{
     width: 100%;
@@ -152,10 +181,41 @@ h1, h2{
     font-size: 0.8rem;
     font-style: italic;
 }
+
+
 svg {
     background-color: transparent;
     height: 100%;
     width: 100%;
+}
+.firstDataBoard img {
+    display: none;
+    object-fit: cover;
+    width: 100%;
+    z-index: 29;
+    opacity: 0;
+    position: relative;
+    transition: opacity 2s ease-in, z-index 1s ease 2s;
+}
+
+.addImage img{
+    display: block;
+    opacity: 1;
+    z-index: 30;
+}
+
+.addImage svg{
+    display: none;
+}
+
+
+
+
+
+
+
+#myChart{
+    height: 90%;
 }
 
 .hover-highlight{
@@ -300,4 +360,27 @@ tr{
 
 .nextSection{
     width: 50%;
+}
+
+
+/* secondDataBoard */
+
+.secondDataBoard .mapContainer{
+    height: 100%;
+}
+
+#coeffCorrelation{
+    color: red;
+}
+
+.secondDataBoard .analysis{
+    height: 80%;
+}
+
+.secondDataBoard .endSection{
+    height: 20%;
+}
+
+.secondDataBoard .nextSection{
+    width: 100%;
 }

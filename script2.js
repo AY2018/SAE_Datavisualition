@@ -1,37 +1,41 @@
 Promise.all([
-  fetch('state_crime.json').then(response => response.json()),
-  fetch('./unemployment.json').then(response => response.json())
+    fetch('state_crime.json').then((response) => response.json()),
+    fetch('./unemployment.json').then((response) => response.json()),
 ]).then(([crimeData, unemploymentData]) => {
-  const averageViolentCrimeRates = calculateAverageRates(crimeData);
-  const unemploymentRates = calculateUnemploymentRates(unemploymentData);
+    const averageViolentCrimeRates = calculateAverageRates(crimeData);
+    const unemploymentRates = calculateUnemploymentRates(unemploymentData);
 
-  // Merge the two datasets
-  const mergedData = mergeData(averageViolentCrimeRates, unemploymentRates);
+    // Merge the two datasets
+    const mergedData = mergeData(averageViolentCrimeRates, unemploymentRates);
 
-  createChart(mergedData, 'scatter');
+    createChart(mergedData, 'line');
+
+    // Appeler displayCorrelationCoefficient ici avec les données chargées
+    displayCorrelationCoefficient(averageViolentCrimeRates, unemploymentRates);
 });
 
 function calculateAverageRates(data) {
-  const yearlyData = {};
+    const yearlyData = {};
 
-  // Aggregate data by year
-  data.forEach(stateData => {
-    const year = stateData.Year;
-    const violentRate = stateData.Data.Rates.Violent.All;
+    data.forEach((stateData) => {
+        const year = parseInt(stateData.Year); // Assurez-vous que l'année est un nombre
+        if (year >= 1960 && year <= 2010) { // Filtrer les données entre 1960 et 2010
+            const violentRate = stateData.Data.Rates.Violent.All;
 
-    if (!yearlyData[year]) {
-      yearlyData[year] = { totalRate: 0, count: 0 };
-    }
+            if (!yearlyData[year]) {
+                yearlyData[year] = { totalRate: 0, count: 0 };
+            }
 
-    yearlyData[year].totalRate += violentRate;
-    yearlyData[year].count++;
-  });
+            yearlyData[year].totalRate += violentRate;
+            yearlyData[year].count++;
+        }
+    });
 
   // Calculate average rate per year
   const averageRates = Object.keys(yearlyData).map(year => {
     return {
       year,
-      averageRate: yearlyData[year].totalRate / yearlyData[year].count
+      averageRate: (yearlyData[year].totalRate * 1000) / yearlyData[year].count
     };
   });
 
@@ -39,10 +43,13 @@ function calculateAverageRates(data) {
 }
 
 function calculateUnemploymentRates(data) {
-  return data.map(entry => ({
-    year: entry.year.toString(), // Convert the year to string if necessary
-    unemploymentRate: entry.unemployed_percent // Extract the unemployment percent
-  }));
+    return data.filter(entry => {
+        const year = parseInt(entry.year);
+        return year >= 1960 && year <= 2010;
+    }).map(entry => ({
+        year: entry.year.toString(),
+        unemploymentRate: entry.unemployed_percent,
+    }));
 }
 
 
@@ -123,4 +130,68 @@ function createChart(data, type) {
       maintainAspectRatio : false,
     }
   });
+}
+
+
+function calculateCorrelationCoefficient(crimeData, unemploymentData) {
+  const n = crimeData.length;
+  let sum_x = 0, sum_y = 0, sum_xy = 0, sum_x2 = 0, sum_y2 = 0;
+
+  for (let i = 0; i < n; i++) {
+    const x = crimeData[i];
+    const y = unemploymentData[i];
+
+    console.log(`x (${i}): ${x}, y (${i}): ${y}`); // Imprime chaque paire de valeurs
+
+    sum_x += x;
+    sum_y += y;
+    sum_xy += (x * y);
+    sum_x2 += (x * x);
+    sum_y2 += (y * y);
+  }
+
+  console.log(`Sum_x: ${sum_x}, Sum_y: ${sum_y}, Sum_xy: ${sum_xy}, Sum_x2: ${sum_x2}, Sum_y2: ${sum_y2}`); // Imprime les sommes
+
+  const numerator = (n * sum_xy - sum_x * sum_y);
+  const denominator = Math.sqrt((n * sum_x2 - sum_x * sum_x) * (n * sum_y2 - sum_y * sum_y));
+
+  console.log(`Numerator: ${numerator}, Denominator: ${denominator}`); // Imprime le numérateur et le dénominateur
+
+  if (denominator === 0) {
+    console.error('Erreur : Dénominateur zéro dans le calcul de corrélation');
+    return NaN;
+  }
+
+  const correlationCoefficient = numerator / denominator;
+
+  return correlationCoefficient;
+}
+
+
+
+function displayCorrelationCoefficient(crimeData, unemploymentData) {
+    const filteredData = mergeData(crimeData, unemploymentData).filter(
+        (entry) => entry.unemploymentRate !== null
+    );
+
+    console.log('Filtered Data:', filteredData);
+
+    const crimeRates = filteredData.map((entry) => entry.averageRate);
+    const unemploymentRates = filteredData.map(
+        (entry) => entry.unemploymentRate
+    );
+
+    console.log('Crime Rates:', crimeRates);
+    console.log('Unemployment Rates:', unemploymentRates);
+
+    const correlationCoefficient = calculateCorrelationCoefficient(
+        crimeRates,
+        unemploymentRates
+    );
+
+    console.log('Correlation Coefficient:', correlationCoefficient);
+
+    document.getElementById(
+        'coeffCorrelation'
+    ).innerText = `${correlationCoefficient.toFixed(2)}`;
 }
