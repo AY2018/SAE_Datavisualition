@@ -1,3 +1,13 @@
 
+On observe sur le graphique que même s'il ya certaines periodes où le nombre de crimes aux USA à augmenté ou diminué en même temps que le chomage (par exemple : 1989 à 2000), ce n'est que sur quelques périodes. 
 
-Toutefois, il est important de souligner que corrélation ne signifie pas causalité! Cette corrélation pourrait suggérer plusieurs scénarios possibles : Les facteurs sociaux, économiques ou politiques qui influencent le taux de crime pourraient être similaires dans des États géographiquement proches. Il pourrait y avoir une certaine forme d'influence entre les États voisins concernant les comportements criminels ou les politiques de prévention de la criminalité. 
+
+Pour confirmer notre hypothèse initiale comme quoi le taux de chomage influe le nombre de crimes commis aux usa, nous avons donc calculer le coefficient de corrélation pour voir à quel point ces variables sont dépendantes l'une de l'autre. 
+
+Pour le jeu de données que l'on a put récupéré, le coefficient de corrélation est de 0.28.
+
+
+Un coefficient de 0.28 suggère qu'il existe une tendance positive entre les deux variables, ce qui signifie que, en général, à mesure que le taux de chômage augmente, le nombre de crimes a également tendance à augmenter, et vice versa. Cependant, la faiblesse de ce coefficient indique que cette relation n'est pas très forte.
+
+Un coefficient de 0.28 indique également que d'autres facteurs, non pris en compte dans cette analyse, peuvent influencer le taux de criminalité. Le taux de chômage n'est qu'une des nombreuses variables potentielles.
+

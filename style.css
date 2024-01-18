@@ -23,14 +23,24 @@ main{
 body{
     background-color: black;
 }
-img{
+#homepage img{
     display: block;
     width: 50%;
     height: 100%;
     object-fit: cover;
+    position: absolute;
     transition: 4s ease-in-out 1s;
+    top: 0;
 }
 
+
+#homepage .img1{
+    left: 0;
+}
+
+#homepage .img2{
+    right: 0;
+}
 h1, h2{
     font-family: 'Teko', sans-serif;
 }
@@ -41,6 +51,7 @@ h1, h2{
     height: 100%;
     display: flex;
     overflow: hidden;
+    justify-content: center;
     position: relative;
     z-index: 9999;
     background-color: transparent;
@@ -50,27 +61,64 @@ h1, h2{
     z-index: -99;
     transition: 2s ease 5s;
 }
-.move #homepage .img1{
+.move #homepage .img2{
     transform: translateX(100%);
 }
 
-.move #homepage .img2 {
+.move #homepage .img1 {
     transform: translateX(-100%);
 }
 
 
- #homepage button{
+
+ #homepage .homeText{
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     opacity: 1;
     transition: 1s ease-in;
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 60px 40px;
+    border: 6px solid #830c06;
 }
 
-.move #homepage button{
+.homeText h1{
+    color: #E81609;
+    font-size: 2rem;
+}
+
+.homeText p{
+    text-align: justify;
+}
+
+button{
+    font-family: 'Teko', sans-serif;
+    color: white;
+    font-size: 2rem;
+    padding: 10px 40px;
+    border-radius: 10px;
+    border: none;
+    background: rgb(183, 8, 3);
+    background: linear-gradient(90deg, rgba(183, 8, 3, 1) 0%, rgba(115, 4, 3, 1) 100%);
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+button:hover{
+    filter: brightness(1.3);
+}
+.move #homepage .homeText{
     opacity: 0 !important;
 }
+
+
+
 
 .move .firstDataBoard{
     opacity: 1;
@@ -85,9 +133,11 @@ h1, h2{
     z-index: 10;
     padding: 30px 2.5%;
     display: flex;
+    flex-direction: column;
+    gap: 30px;
     overflow: hidden;
     opacity: 0;
-    transition: opacity 1s ease-in, z-index 1s ease 2s;
+    transition: opacity 1s ease-in, z-index 0.1s ease 1s;
     
 }
 
@@ -124,29 +174,89 @@ h1, h2{
     top: 0;
     left: 0;
     opacity: 1;
-    transition: opacity 3s ease-in-out 4s, z-index 2s ease 6.5s;
+    transition: opacity 3s ease-in-out 4s, z-index 0.1s ease 7s;
 }
 
 .move .firstDataBoard .blackscreen{
     opacity: 0;
     z-index: -99;
 }
+
+.firstDataBoard img {
+    display: none;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    z-index: 29;
+    opacity: 0;
+    position: relative;
+    transition: opacity 2s ease-in, z-index 0.1s ease 2s;
+}
+
+.addImage img {
+    display: block;
+    opacity: 1;
+    z-index: 30;
+}
+
+.addImage svg {
+    display: none;
+}
+
+
 /* MAP FIRST ROW */
 
+.heading{
+    height: 10%;
+}
+
+.heading h1{
+    font-size: 1.7rem;
+    text-align: center;
+}
+
+.heading p{
+    text-align: justify;
+}
+
+.containerInfo{
+    display: flex;
+    width: 100%;
+    height: 90%;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.leftContainer{
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+        width: 40%;
+        background: rgb(67, 0, 4);
+            background: linear-gradient(45deg, rgba(67, 0, 4, 1) 0%, rgb(156, 4, 4) 100%);
+        border-radius: 10px;
+}
 .leftColumn{
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 50%;
-    border-right: 2px dashed white;
+    width: 100%;
+    background: rgb(56, 56, 56);
+        background: linear-gradient(138deg, rgba(56, 56, 56, 1) 0%, rgba(26, 26, 26, 1) 100%);
+border-radius: 10px;
+    position: relative;
     padding-right: 20px;
+    overflow-y: auto;
 }
+
 
 .rightColumn {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 50%;
+    width: 60%;
     padding-left: 20px;
 }
 
@@ -162,7 +272,6 @@ h1, h2{
 .mapContainer{
     height: max-content;
     padding: 20px 0;
-    border-bottom: 2px dashed white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -188,57 +297,38 @@ svg {
     height: 100%;
     width: 100%;
 }
-.firstDataBoard img {
-    display: none;
-    object-fit: cover;
-    width: 100%;
-    z-index: 29;
-    opacity: 0;
-    position: relative;
-    transition: opacity 2s ease-in, z-index 1s ease 2s;
-}
-
-.addImage img{
-    display: block;
-    opacity: 1;
-    z-index: 30;
-}
-
-.addImage svg{
-    display: none;
-}
 
 
 
 
 
 
-
-#myChart{
-    height: 90%;
-}
 
 .hover-highlight{
     fill: yellow !important;
 }
 
-#tooltip {
-    visibility: hidden;
-    height: auto;
-    width: auto;
-    color: white;
-}
+
 
 .tooltipContainer{
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 20%;
 }
 
-.tooltipContainer #tooltip{
-    width: 50%;
-    font-size: 2.5vh;
+#tooltip {
+    visibility: visible;
+    height: auto;
+    width: auto;
+    color: white;
+    padding: 20px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: #5e0a05;
+    font-size: 1rem;
     text-align: center;
+    font-weight: bold;
 }
 
 .legend{
@@ -247,31 +337,9 @@ svg {
     flex-direction: column;
     gap: 0px;
     padding: 20px;
-    border-left: 2px dashed white;
     font-size: 0.8rem;
 }
 
-.table{
-    display: flex;
-    gap: 20px;
-}
-
-.table table{
-    width: 50%;
-    text-align: center;
-}
-
-tr th{
-    font-size: 0.8rem;
-}
-
-tr{
-    cursor:default;
-}
-
-.table p {
-    width: 50%;
-}
 
 
 .boxContainer{
@@ -307,80 +375,112 @@ tr{
 
 .rightColumn {
     gap: 20px;
+    overflow-y: auto;
+    justify-content: space-between;
 }
 
-.rightColumn p {
-    font-size: 1.2vw;
-}
 
-.rightColumn .analysis{
+.analysisText{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    height: 90%;
-}
-.firstText{
-    display: flex;
-        flex-direction: column;
-        gap: 20px;
+    height: 80%;
+    overflow-y: auto;
+    justify-content: center;
 }
 
-.firstText h2{
-    font-size: 2.5vh;
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.row p {
+    width: 50%;
+}
+
+.table {
+    display: flex;
+    gap: 20px;
+    width: 50%;
+    border: 3px solid #5e0a05;
+
+}
+
+table {
+    width: 50%;
+    text-align: center;
+    background: rgb(56, 56, 56);
+    background: linear-gradient(138deg, rgba(56, 56, 56, 1) 0%, rgba(26, 26, 26, 1) 100%);
+    border-collapse: collapse;
+    border: 1px solid #5e0a05;
+}
+
+tr th,
+tr,
+td {
+    font-size: 0.8rem;
+    border: 1px solid #830f09;
+}
+
+tr {
+    cursor: default;
+}
+
+.table p {
+    width: 50%;
+}
+
+.rightColumn h2{
+    text-align: center;
 }
 
 .endSection{
     display: flex;
-    border-top: 2px dashed white;
-    height: 10%;
-}
-
-.endSection div{
-    padding: 20px;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-around;
 }
 
-.graphisme{
-    border-right: 2px dashed white;
-    width: 50%;
-}
 
-.endSection div section{
-    border-radius: 10px;
-    background-color: red;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.nextSection{
-    width: 50%;
+.endSection button{
+    padding: 10px 20px;
 }
 
 
 /* secondDataBoard */
 
-.secondDataBoard .mapContainer{
-    height: 100%;
-}
+
 
 #coeffCorrelation{
     color: red;
 }
 
-.secondDataBoard .analysis{
-    height: 80%;
+.secondDataBoard .leftContainer{
+    width: 50%;
 }
 
-.secondDataBoard .endSection{
-    height: 20%;
+.secondDataBoard .rightColumn {
+    width: 50%;
 }
 
-.secondDataBoard .nextSection{
-    width: 100%;
+
+#myChart {
+    height: 50%;
+}
+
+
+.secondDataBoard .containerInfo{
+    overflow-y: auto;
+}
+
+.secondDataBoard .heading{
+    height: fit-content;
+}
+
+.secondDataBoard button{
+    width: fit-content;
+    margin-inline: auto;
+    font-size: 1.5rem;
 }

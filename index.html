@@ -21,232 +21,240 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <main id="main" class="">
+    <main id="main" class="move">
       <section id="homepage">
-        <img src="3.png" alt="" class="img2" />
         <img src="2.png" alt="" class="img1" />
-        <button onclick="moveImg()">Click me</button>
+        <img src="3.png" alt="" class="img2" />
+        <section class="homeText">
+          <h1>Criminalité aux États-Unis</h1>
+          <p>
+            Bienvenue sur notre projet de datavisualisation, une exploration en
+            profondeur de la criminalité aux États-Unis. Notre quête a débuté
+            avec une question simple mais puissante : quels facteurs pourraient
+            influencer le taux de criminalité aux USA ? Cette interrogation nous
+            a menés à plonger dans l'univers complexe et fascinant de la
+            criminologie et des statistiques. <br />
+            <br />
+            À travers ce site, nous vous invitons à explorer avec nous deux
+            hypothèses principales. Chacune de ces hypothèses est soutenue par
+            une visualisation de données et une analyse statistique approfondie.
+            Nous ne nous contentons pas de présenter des faits ; nous cherchons
+            à offrir une compréhension plus nuancée de la criminalité aux
+            États-Unis.
+          </p>
+          <button onclick="moveImg()">Découvrir les hypothèses</button>
+        </section>
       </section>
 
       <article class="firstDataBoard">
         <div class="blackscreen"></div>
-        <article class="leftColumn">
-          <div class="title">
-            <h1>
-              Hypothèse : le taux de criminalité d'un État pourrait être
-              influencé par ceux de ses voisins
-            </h1>
+        <section class="heading">
+          <h1>
+            Hypothèse : le taux de criminalité d'un État pourrait être influencé
+            par ceux de ses voisins
+          </h1>
+          <p>
+            On observe sur la carte choroplèthe que les États géographiquement
+            proches affichent souvent des couleurs similaires, suggérant des
+            taux de criminalité comparables. Cette observation appuie notre
+            hypothèse initiale selon laquelle le taux de criminalité d'un État
+            pourrait être influencé par ceux de ses voisins.
+          </p>
+        </section>
+
+        <article class="containerInfo">
+          <div class="leftContainer">
+            <article class="leftColumn">
+              <div class="mapContainer">
+                <h2>
+                  Carte Choroplèthe des Taux de Criminalité par État aux
+                  États-Unis en 2020 <span>(Par 100 000 personnes)</span>
+                </h2>
+                <img src="./2.png" alt="" />
+                <svg viewBox="0 0 970 610" id="canvas"></svg>
+              </div>
+              <div class="tooltipContainer">
+                <div id="tooltip">Etats : Taux</div>
+                <div class="legend">
+                  <div class="boxContainer">
+                    <p>Moins de 3%</p>
+                    <div class="box"></div>
+                  </div>
+
+                  <div class="boxContainer">
+                    <p>Moins de 4%</p>
+                    <div class="box"></div>
+                  </div>
+
+                  <div class="boxContainer">
+                    <p>Moins de 5%</p>
+                    <div class="box"></div>
+                  </div>
+
+                  <div class="boxContainer">
+                    <p>Plus de 5%</p>
+                    <div class="box"></div>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="mapContainer">
+
+          <article class="rightColumn">
             <h2>
-              Carte Choroplèthe des Taux de Criminalité par État aux États-Unis
-              en 2020 <span>(Par 100 000 personnes)</span>
+              Analyse de la corrélation entre le taux de crime d'un état et
+              celui de ses voisins
             </h2>
-            <svg viewBox="0 0 970 610" id="canvas"></svg>
-            <img src="./2.png" alt="" />
-          </div>
-          <div class="tooltipContainer">
-            <div id="tooltip"></div>
-            <div class="legend">
-              <div class="boxContainer">
-                <p>Moins de 3%</p>
-                <div class="box"></div>
-              </div>
 
-              <div class="boxContainer">
-                <p>Moins de 4%</p>
-                <div class="box"></div>
-              </div>
+            <div class="analysisText">
+              <section class="row">
+                <p>
+                  Pour étayer cette hypothèse, nous avons décidé de calculer le
+                  coefficient de corrélation entre le taux de criminalité d'un
+                  État et la moyenne des taux dans les États voisins. Nous avons
+                  choisi de limiter notre étude à cinq États, judicieusement
+                  répartis à travers le pays.
+                </p>
+                <table>
+                  <tr>
+                    <th>État</th>
+                    <th>Taux de crime</th>
+                    <th>Moyenne du taux de crimes des états voisins</th>
+                  </tr>
+                  <tr
+                    id="coloradoRow"
+                    onmouseover="highlight('08')"
+                    onmouseout="unhighlight('08')"
+                  >
+                    <td>Colorado</td>
+                    <td>6.09</td>
+                    <td>4.98</td>
+                  </tr>
+                  <tr
+                    id="indianaRow"
+                    onmouseover="highlight('18')"
+                    onmouseout="unhighlight('18')"
+                  >
+                    <td>Indiana</td>
+                    <td>3.92</td>
+                    <td>3.64</td>
+                  </tr>
+                  <tr
+                    id="georgiaRow"
+                    onmouseover="highlight('13')"
+                    onmouseout="unhighlight('13')"
+                  >
+                    <td>Georgia</td>
+                    <td>4.41</td>
+                    <td>5.03</td>
+                  </tr>
+                  <tr
+                    id="nycRow"
+                    onmouseover="highlight('36')"
+                    onmouseout="unhighlight('36')"
+                  >
+                    <td>New York</td>
+                    <td>3.19</td>
+                    <td>2.91</td>
+                  </tr>
+                  <tr
+                    id="southRow"
+                    onmouseover="highlight('46')"
+                    onmouseout="unhighlight('46')"
+                  >
+                    <td>South Dakoda</td>
+                    <td>4.41</td>
+                    <td>4.19</td>
+                  </tr>
+                </table>
+              </section>
 
-              <div class="boxContainer">
-                <p>Moins de 5%</p>
-                <div class="box"></div>
-              </div>
-
-              <div class="boxContainer">
-                <p>Plus de 5%</p>
-                <div class="box"></div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="rightColumn">
-          <div class="analysis">
-            <section class="firstText">
-              <h2>
-                Analyse de la corrélation entre le taux de crime d'un état et
-                celui de ses voisins
-              </h2>
-              <p>
-                On observe sur la carte choroplèthe que les États
-                géographiquement proches affichent souvent des couleurs
-                similaires, suggérant des taux de criminalité comparables. Cette
-                observation appuie notre hypothèse initiale selon laquelle le
-                taux de criminalité d'un État pourrait être influencé par ceux
-                de ses voisins.
-                <br /><br />
-                Pour étayer cette hypothèse, nous avons décidé de calculer le
-                coefficient de corrélation entre le taux de criminalité d'un
-                État et la moyenne des taux dans les États voisins. Nous avons
-                choisi de limiter notre étude à cinq États, judicieusement
-                répartis à travers le pays.
-              </p>
-            </section>
-            <section class="table">
-              <table border="1">
-                <tr>
-                  <th>État</th>
-                  <th>Taux de crime</th>
-                  <th>Moyenne du taux de crimes des états voisins</th>
-                </tr>
-                <tr
-                  id="coloradoRow"
-                  onmouseover="highlight('08')"
-                  onmouseout="unhighlight('08')"
-                >
-                  <td>Colorado</td>
-                  <td>6.09</td>
-                  <td>4.98</td>
-                </tr>
-                <tr
-                  id="indianaRow"
-                  onmouseover="highlight('18')"
-                  onmouseout="unhighlight('18')"
-                >
-                  <td>Indiana</td>
-                  <td>3.92</td>
-                  <td>3.64</td>
-                </tr>
-                <tr
-                  id="georgiaRow"
-                  onmouseover="highlight('13')"
-                  onmouseout="unhighlight('13')"
-                >
-                  <td>Georgia</td>
-                  <td>4.41</td>
-                  <td>5.03</td>
-                </tr>
-                <tr
-                  id="nycRow"
-                  onmouseover="highlight('36')"
-                  onmouseout="unhighlight('36')"
-                >
-                  <td>New York</td>
-                  <td>3.19</td>
-                  <td>2.91</td>
-                </tr>
-                <tr
-                  id="southRow"
-                  onmouseover="highlight('46')"
-                  onmouseout="unhighlight('46')"
-                >
-                  <td>South Dakoda</td>
-                  <td>4.41</td>
-                  <td>4.19</td>
-                </tr>
-              </table>
-              <p>
-                Le coefficient de corrélation obtenu est de 0.82, se qui est
-                très proche de la valeur absolue de 1. Cette forte corrélation
-                indique une relation étroite entre le taux de criminalité d'un
-                état et celui de ses états voisins. En général, les états avec
-                des taux de criminalité élevés tendent à être entourés par des
-                états ayant également des taux élevés, et inversement.
-              </p>
-            </section>
-
-            <section class="secondText">
-              <p>
-                Toutefois, il est important de souligner que corrélation ne
-                signifie pas causalité! Cette corrélation pourrait suggérer
-                plusieurs scénarios possibles : Les facteurs sociaux,
-                économiques ou politiques qui influencent le taux de crime
-                pourraient être similaires dans des États géographiquement
-                proches. Il pourrait y avoir une certaine forme d'influence
-                entre les États voisins concernant les comportements criminels
-                ou les politiques de prévention de la criminalité.
-              </p>
-            </section>
-          </div>
-
-          <section class="endSection">
-            <div class="graphisme">
-              <section>
-                <h3>Voir la carte graphique</h3>
+              <section class="row">
+                <p>
+                  Le coefficient de corrélation obtenu est de 0.82, se qui est
+                  très proche de la valeur absolue de 1. Cette forte corrélation
+                  indique une relation étroite entre le taux de criminalité d'un
+                  état et celui de ses états voisins. En général, les états avec
+                  des taux de criminalité élevés tendent à être entourés par des
+                  états ayant également des taux élevés, et inversement.
+                </p>
+                <p>
+                  Toutefois, il est important de souligner que corrélation ne
+                  signifie pas causalité! Cette corrélation pourrait suggérer
+                  plusieurs scénarios possibles : Les facteurs sociaux,
+                  économiques ou politiques qui influencent le taux de crime
+                  pourraient être similaires dans des États géographiquement
+                  proches.
+                </p>
               </section>
             </div>
-            <div class="nextSection">
-              <section onclick="moveToChomage()">
-                <h3>Hypothèse : chômage</h3>
-              </section>
-            </div>
-          </section>
+
+            <section class="endSection">
+              <button>Voir la carte graphique</button>
+
+              <button onclick="moveToChomage()">Hypothèse : chômage</button>
+            </section>
+          </article>
         </article>
       </article>
 
-      <!-- Second Page -->
+      <!-- Second Page secondDataBoard -->
       <article class="secondDataBoard">
-        <article class="leftColumn">
-          <div class="title">
-            <h1>
-              Hypothèse : le taux de criminalité aux USA est influencé par le
-              taux de chomage
-            </h1>
-          </div>
-          <div class="mapContainer">
-            <canvas id="myChart"></canvas>
-          </div>
-        </article>
+        <section class="heading">
+          <h1>
+            Hypothèse : le taux de criminalité aux USA est influencé par le taux
+            de chomage
+          </h1>
+        </section>
 
-        <article class="rightColumn">
-          <div class="analysis">
-            <section class="firstText">
-              <h2>
-                Analyse de la corrélation entre le taux de crime d'un état et
-                celui de ses voisins
-              </h2>
-              <p>
-                L'analyse du graphique révèle que, bien que certaines périodes
-                aux États-Unis aient montré une corrélation entre l'augmentation
-                ou la diminution simultanées du nombre de crimes et du taux de
-                chômage (comme entre 1989 et 2000), ces occurrences semblent se
-                limiter à des intervalles spécifiques.
-                <br /><br />
-                Pour évaluer notre hypothèse selon laquelle le taux de chômage
-                influence la criminalité aux États-Unis, nous avons calculé le
-                coefficient de corrélation afin de mesurer le degré de
-                dépendance entre ces deux variables. Sur la base des données
-                disponibles, le coefficient obtenu est de
-                <span id="coeffCorrelation"></span>. <br /><br />
-                Ce coefficient révèle une corrélation positive modeste entre le
-                taux de chômage et le nombre de crimes. En d'autres termes, il
-                tend à y avoir une légère augmentation du taux de criminalité
-                avec la hausse du chômage, et inversement. Néanmoins,
-                l'intensité relativement faible de ce coefficient suggère que la
-                relation entre ces variables n'est pas particulièrement robuste.
-                <br /><br />
-                Par ailleurs, la valeur faible du coefficient de corrélation
-                indique que d'autres facteurs, non considérés dans cette
-                analyse, pourraient également avoir une influence significative
-                sur les taux de criminalité. Ainsi, le taux de chômage est à
-                considérer comme une parmi plusieurs variables potentiellement
-                influentes.
-              </p>
-            </section>
+        <article class="containerInfo">
+          <div class="leftContainer">
+            <article class="leftColumn"><canvas id="myChart"></canvas></article>
           </div>
 
-          <section class="endSection">
-            <div class="nextSection">
-              <section onclick="moveToMap()">
-                <h3>
-                  Hypothèse : le taux de criminalité d'un État pourrait être
-                  influencé par ceux de ses voisins
-                </h3>
-              </section>
-            </div>
-          </section>
+          <article class="rightColumn">
+            <h2>
+              Analyse de la corrélation entre le taux de crime d'un état et
+              celui de ses voisins
+            </h2>
+
+            <p>
+              L'analyse du graphique révèle que, bien que certaines périodes aux
+              États-Unis aient montré une corrélation entre l'augmentation ou la
+              diminution simultanées du nombre de crimes et du taux de chômage
+              (comme entre 1989 et 2000), ces occurrences semblent se limiter à
+              des intervalles spécifiques.
+            </p>
+
+            <p>
+              Pour évaluer notre hypothèse selon laquelle le taux de chômage
+              influence la criminalité aux États-Unis, nous avons calculé le
+              coefficient de corrélation afin de mesurer le degré de dépendance
+              entre ces deux variables. Sur la base des données disponibles, le
+              coefficient obtenu est de <span id="coeffCorrelation"></span>.
+            </p>
+            <p>
+              Par ailleurs, la valeur faible du coefficient de corrélation
+              indique que d'autres facteurs, non considérés dans cette analyse,
+              pourraient également avoir une influence significative sur les
+              taux de criminalité. Ainsi, le taux de chômage est à considérer
+              comme une parmi plusieurs variables potentiellement influentes.
+            </p>
+            <p>
+              Ce coefficient révèle une corrélation positive modeste entre le
+              taux de chômage et le nombre de crimes. En d'autres termes, il
+              tend à y avoir une légère augmentation du taux de criminalité avec
+              la hausse du chômage, et inversement. Néanmoins, l'intensité
+              relativement faible de ce coefficient suggère que la relation
+              entre ces variables n'est pas particulièrement robuste.
+            </p>
+          </article>
         </article>
+
+        <button onclick="moveToMap()">
+          Hypothèse: le taux de criminalité d'un État pourrait être influencé
+          par ceux de ses voisins
+        </button>
       </article>
     </main>
 

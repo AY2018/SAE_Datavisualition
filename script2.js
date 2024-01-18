@@ -18,8 +18,8 @@ function calculateAverageRates(data) {
     const yearlyData = {};
 
     data.forEach((stateData) => {
-        const year = parseInt(stateData.Year); // Assurez-vous que l'année est un nombre
-        if (year >= 1960 && year <= 2010) { // Filtrer les données entre 1960 et 2010
+        const year = parseInt(stateData.Year); 
+        if (year >= 1960 && year <= 2010) { 
             const violentRate = stateData.Data.Rates.Violent.All;
 
             if (!yearlyData[year]) {
@@ -72,7 +72,7 @@ function createChart(data, type) {
       labels: data.map(row => row.year),
       datasets: [
         {
-          label: 'Average Violent Crime Rate',
+          label: 'Nombre de crimes',
           data: data.map(row => row.averageRate),
           borderWidth: 1,
           borderColor: 'red',
@@ -80,7 +80,7 @@ function createChart(data, type) {
           yAxisID: 'y1'
         },
         {
-          label: 'Unemployment Rate',
+          label: 'Taux de chômage',
           data: data.map(row => row.unemploymentRate),
           borderWidth: 1,
           borderColor: 'yellow', // Yellow color for the unemployment rate line
@@ -93,7 +93,7 @@ function createChart(data, type) {
       plugins: {
         title: {
           display: true,
-          text: 'Evolution of Crime Rate and Unemployment Rate Over the Years'
+          text: 'Evolution du Nombre de crimes & et du Taux de chômage aux US'
         },
         legend: {
           display: true,
@@ -106,7 +106,7 @@ function createChart(data, type) {
           position: 'left',
           title: {
             display: true,
-            text: 'Number of crimes'
+            text: 'Nombre de crimes'
           }
         },
         y2: {
@@ -114,7 +114,7 @@ function createChart(data, type) {
           position: 'right',
           title: {
             display: true,
-            text: 'Unemployment Rate (%)'
+            text: 'Taux de chômahe (%)'
           },
           grid: {
             drawOnChartArea: false // only show the grid for y1
@@ -141,7 +141,7 @@ function calculateCorrelationCoefficient(crimeData, unemploymentData) {
     const x = crimeData[i];
     const y = unemploymentData[i];
 
-    console.log(`x (${i}): ${x}, y (${i}): ${y}`); // Imprime chaque paire de valeurs
+    console.log(`x (${i}): ${x}, y (${i}): ${y}`); 
 
     sum_x += x;
     sum_y += y;

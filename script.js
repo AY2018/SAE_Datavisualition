@@ -45,11 +45,10 @@ let drawMap = () => {
     let id = stateDataItem['id'];
     let state = crimeData.find((item) => item['id'] === id);
 
-    // Check if the state is found in crimeData
+    
     if (state) {
         let percentage = (state['CrimeRate'] * 100) / 100000;
 
-        // Log state ID, found state object, and calculated percentage
 
         if(percentage <= 3){
             return 'red';
@@ -61,9 +60,8 @@ let drawMap = () => {
             return 'rgb(43, 0, 0)';
         }
     } else {
-        // Log if the state is not found
-        console.error(`State with ID ${id} not found in crimeData`);
-        return 'gray'; // Default color if the state is not found
+        console.error(`State with ID ${id} est introuvale dans crimeData my friend`);
+        return 'gray'; // Couleur de base
     }
 })
 
@@ -97,20 +95,10 @@ let drawMap = () => {
 
 
         .on('mouseout', (stateDataItem) => {
-            tooltip.transition()
-                .style('visibility', 'hidden');
-
-            let id = stateDataItem['id']; 
-            let state = crimeData.find((item) => {
-                return item['fips'] === id;
-            });
-
-            if (state) {
-                tooltip.text(state['fips']);
-            } else {
-                console.error('No matching state found for id:', id);
-                tooltip.text('No data'); // Display placeholder text or handle the error
-            }
+            
+            tooltip.text(
+            'Etats : Taux'
+        );
 })
 
 }
