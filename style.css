@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Play:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap&family=Teko:wght@300;400;500;600;700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+main{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    
+}
+
+body{
+    background-color: black;
+}
+img{
+    display: block;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    transition: 4s ease-in-out 1s;
+}
+
+h1, h2{
+    font-family: 'Teko', sans-serif;
+}
+
+
+#homepage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    z-index: 90;
+    background-color: transparent;
+}
+
+.move #homepage{
+    z-index: -99;
+    transition: 2s ease 5s;
+}
+.move #homepage .img1{
+    transform: translateX(100%);
+}
+
+.move #homepage .img2 {
+    transform: translateX(-100%);
+}
+
+
+ #homepage button{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: 1s ease-in;
+}
+
+.move #homepage button{
+    opacity: 0 !important;
+}
+
+.firstDataBoard{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding: 30px 2.5%;
+    display: flex;
+    overflow: hidden;
+}
+
+
+.blackscreen{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 11;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition: opacity 3s ease-in-out 4s, z-index 2s ease 6.5s;
+}
+
+.move .firstDataBoard .blackscreen{
+    opacity: 0;
+    z-index: -99;
+}
+/* MAP FIRST ROW */
+
+.leftColumn{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    border-right: 2px dashed white;
+    padding-right: 20px;
+}
+
+.rightColumn {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    padding-left: 20px;
+}
+
+
+.title{
+    padding-bottom: 20px;
+    border-bottom: 2px dashed white;
+}
+.title h1{
+    font-size: 3vh;
+}
+
+.mapContainer{
+    height: max-content;
+    padding: 20px 0;
+    border-bottom: 2px dashed white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 80%;
+}
+
+.mapContainer h2{
+    font-size: 1.2rem;
+    text-align: center;
+    width: 80%;
+    
+}
+
+.mapContainer h2 span{
+    font-size: 0.8rem;
+    font-style: italic;
+}
+svg {
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+}
+
+.hover-highlight{
+    fill: yellow !important;
+}
+
+#tooltip {
+    visibility: hidden;
+    height: auto;
+    width: auto;
+    color: white;
+}
+
+.tooltipContainer{
+    display: flex;
+    align-items: center;
+    height: 20%;
+}
+
+.tooltipContainer #tooltip{
+    width: 50%;
+    font-size: 2.5vh;
+    text-align: center;
+}
+
+.legend{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    padding: 20px;
+    border-left: 2px dashed white;
+    font-size: 0.8rem;
+}
+
+.table{
+    display: flex;
+    gap: 20px;
+}
+
+.table table{
+    width: 50%;
+    text-align: center;
+}
+
+tr th{
+    font-size: 0.8rem;
+}
+
+tr{
+    cursor:default;
+}
+
+.table p {
+    width: 50%;
+}
+
+
+.boxContainer{
+    display: flex;
+    align-items: center;
+}
+.boxContainer p{
+    width: 50%;
+}
+.boxContainer .box{
+    width: 30%;
+    height: 20px;
+}
+
+
+.boxContainer:nth-child(1) .box{
+    background-color: red;
+}
+
+.boxContainer:nth-child(2) .box {
+    background-color: rgb(182, 1, 1);
+}
+
+.boxContainer:nth-child(3) .box {
+    background-color: rgb(108, 2, 2);
+}
+
+.boxContainer:nth-child(4) .box {
+    background-color: rgb(43, 0, 0);
+}
+
+/* Right Column */
+
+.rightColumn {
+    gap: 20px;
+}
+
+.rightColumn p {
+    font-size: 1.2vw;
+}
+
+.rightColumn .analysis{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 90%;
+}
+.firstText{
+    display: flex;
+        flex-direction: column;
+        gap: 20px;
+}
+
+.firstText h2{
+    font-size: 2.5vh;
+}
+
+.endSection{
+    display: flex;
+    border-top: 2px dashed white;
+    height: 10%;
+}
+
+.endSection div{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.graphisme{
+    border-right: 2px dashed white;
+    width: 50%;
+}
+
+.endSection div section{
+    border-radius: 10px;
+    background-color: red;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nextSection{
+    width: 50%;
+}
