@@ -5,12 +5,12 @@ Promise.all([
     const averageViolentCrimeRates = calculateAverageRates(crimeData);
     const unemploymentRates = calculateUnemploymentRates(unemploymentData);
 
-    // Merge the two datasets
+
     const mergedData = mergeData(averageViolentCrimeRates, unemploymentRates);
 
     createChart(mergedData, 'line');
 
-    // Appeler displayCorrelationCoefficient ici avec les données chargées
+
     displayCorrelationCoefficient(averageViolentCrimeRates, unemploymentRates);
 });
 
@@ -31,7 +31,7 @@ function calculateAverageRates(data) {
         }
     });
 
-  // Calculate average rate per year
+
   const averageRates = Object.keys(yearlyData).map(year => {
     return {
       year,
@@ -76,15 +76,15 @@ function createChart(data, type) {
           data: data.map(row => row.averageRate),
           borderWidth: 1,
           borderColor: 'red',
-          backgroundColor: 'red', // Red color for the crime rate line
+          backgroundColor: 'red', 
           yAxisID: 'y1'
         },
         {
           label: 'Taux de chômage',
           data: data.map(row => row.unemploymentRate),
           borderWidth: 1,
-          borderColor: 'yellow', // Yellow color for the unemployment rate line
-          backgroundColor: 'rgba(255, 255, 0, 0.5)', // Semi-transparent yellow
+          borderColor: 'yellow', 
+          backgroundColor: 'rgba(255, 255, 0, 0.5)', 
           yAxisID: 'y2'
         }
       ]

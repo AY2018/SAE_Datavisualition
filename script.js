@@ -3,7 +3,7 @@ function moveImg() {
         main.classList.add('move');
       }
 
-      // HIGHLIGHT CORRESPONDING STATE
+
  function highlight(idStr) {
         var element = document.getElementById(idStr);
         if (element) {
@@ -77,7 +77,7 @@ let drawMap = () => {
     let state = crimeData.find((item) => item['id'] === id);
 
     if (state) {
-        // Calculate percentage within the scope of this function
+
         let percentage = (state['CrimeRate'] * 100) / 100000;
         
         tooltip.text(
@@ -87,7 +87,7 @@ let drawMap = () => {
         tooltip.attr('data-crime', percentage.toFixed(2));
     } else {
         console.error('No matching state found for id:', id);
-        tooltip.text('No data'); // Display placeholder text or handle the error
+        tooltip.text('No data'); 
     }
 })
 
